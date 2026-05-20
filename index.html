@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>União entre organizações criminosas na faixa de fronteira do Brasil</title>
+
+  <meta name="description" content="Storytelling prospectivo sobre integração criminal, rotas transnacionais e pressão sobre a segurança e a defesa até 2036.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="União entre organizações criminosas na faixa de fronteira do Brasil">
+  <meta property="og:description" content="Storytelling prospectivo sobre integração criminal, rotas transnacionais e pressão sobre a segurança e a defesa até 2036.">
+  <meta property="og:url" content="https://cenariosprospectivos.github.io/Evento/">
+  <meta property="og:image" content="https://cenariosprospectivos.github.io/Evento/Data/media/hero.png">
+  <meta property="og:image:alt" content="Mapa conceitual da faixa de fronteira do Brasil">
+  <meta property="og:image:type" content="image/png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="União entre organizações criminosas na faixa de fronteira do Brasil">
+  <meta name="twitter:description" content="Storytelling prospectivo sobre integração criminal, rotas transnacionais e pressão sobre a segurança e a defesa até 2036.">
+  <meta name="twitter:image" content="https://cenariosprospectivos.github.io/Evento/Data/media/hero.png">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script src="Data/config/storytelling.js"></script>
+  <script src="Data/config/visual.js"></script>
+  <script src="Data/textos/abertura.js"></script>
+  <script src="Data/textos/faixa_fronteira.js"></script>
+  <script src="Data/textos/orcrim_atuacao.js"></script>
+  <script src="Data/textos/timeline.js"></script>
+  <script src="Data/textos/apreensao_santos.js"></script>
+  <script src="Data/textos/apreensao_cone_norte.js"></script>
+  <script src="Data/textos/conclusao.js"></script>
+  <script src="Data/geojson/faixa_fronteira_brasil.js"></script>
+  <script src="Data/geojson/orcrim_pins.js"></script>
+  <script src="Data/noticias/noticias_fronteira.js"></script>
+  <script src="Data/series/apreensao_santos.js"></script>
+  <script src="Data/series/apreensao_cone_norte.js"></script>
+  <script src="Data/series/glo_forca_nacional.js"></script>
+</head>
+
+<body>
+  <nav class="quick-nav" aria-label="Navegação rápida">
+    <a href="#abertura">Abertura</a>
+    <a href="#faixa-fronteira">Fronteira</a>
+    <a href="#orcrim">ORCRIM</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#santos">Santos</a>
+    <a href="#cone-norte">Cone Norte</a>
+    <a href="#glo-fn">GLO/FN</a>
+    <a href="#conclusao">Conclusão</a>
+  </nav>
+
+  <header id="abertura" class="hero">
+    <div class="hero-image" id="heroImage">
+        <img src="./Data/media/hero.png" alt="Mapa conceitual da faixa de fronteira do Brasil">
+      </div>
+    <div class="hero-content">
+      <p class="kicker" id="heroKicker">Storytelling prospectivo</p>
+      <h1 id="heroTitle"></h1>
+      <p class="lead" id="heroSubtitle"></p>
+      <article class="hypothesis-card">
+        <span>Hipótese</span>
+        <p id="heroHypothesis"></p>
+      </article>
+    </div>
+  </header>
+
+  <main>
+    <section class="story-section two-col" id="faixa-fronteira">
+      <div class="copy-block">
+        <span class="section-number">01</span>
+        <h2 id="faixaTitle"></h2>
+        <p id="faixaText"></p>
+        <div class="method-card" id="faixaObservation"></div>
+      </div>
+      <div class="map-card">
+        <div id="mapFaixa" class="map"></div>
+        <div class="legend" id="legendFaixa"></div>
+      </div>
+    </section>
+
+    <section class="story-section two-col" id="orcrim">
+      <div class="copy-block">
+        <span class="section-number">02</span>
+        <h2 id="orcrimTitle"></h2>
+        <p id="orcrimText"></p>
+        <div class="method-card" id="orcrimObservation"></div>
+      </div>
+      <div class="map-card">
+        <div id="mapOrcrim" class="map"></div>
+        <div class="legend" id="legendOrcrim"></div>
+      </div>
+    </section>
+
+    <section class="story-section" id="timeline">
+      <div class="wide">
+        <span class="section-number">03</span>
+        <h2 id="timelineTitle"></h2>
+        <p class="section-lead" id="timelineText"></p>
+        <div class="timeline-strip" id="timelineStrip"></div>
+        <article class="timeline-detail" id="timelineDetail"></article>
+        <div class="method-card" id="timelineObservation"></div>
+      </div>
+    </section>
+
+    <section class="story-section two-col" id="santos">
+      <div class="copy-block">
+        <span class="section-number">04</span>
+        <h2 id="santosTextTitle"></h2>
+        <p id="santosText"></p>
+        <div class="method-card" id="santosObservation"></div>
+      </div>
+      <div class="chart-card">
+        <h3 id="santosChartTitle"></h3>
+        <canvas id="chartSantos"></canvas>
+        <div id="santosFallback" class="table-fallback"></div>
+      </div>
+    </section>
+
+    <section class="story-section two-col" id="cone-norte">
+      <div class="copy-block">
+        <span class="section-number">05</span>
+        <h2 id="coneTextTitle"></h2>
+        <p id="coneText"></p>
+        <div class="method-card" id="coneObservation"></div>
+      </div>
+      <div class="chart-card">
+        <h3 id="coneChartTitle"></h3>
+        <canvas id="chartCone"></canvas>
+        <div id="coneFallback" class="table-fallback"></div>
+        <div class="evidence-list" id="coneEvidence"></div>
+      </div>
+    </section>
+
+    <section class="story-section" id="glo-fn">
+      <div class="wide">
+        <span class="section-number">06</span>
+        <h2>Emprego excepcional de forças federais</h2>
+        <p class="section-lead">
+          O gráfico reúne operações de GLO e atos publicados relacionados à Força Nacional. As séries têm naturezas jurídicas diferentes e não devem ser lidas como medidas equivalentes.
+        </p>
+        <div class="chart-card">
+          <h3 id="gloChartTitle"></h3>
+          <canvas id="chartGlo"></canvas>
+          <div id="gloFallback" class="table-fallback"></div>
+        </div>
+        <div class="method-card">
+          GLO indica operações autorizadas; Força Nacional indica atos publicados de emprego, prorrogação ou atos correlatos. A comparação é indicativa da recorrência de instrumentos federais, não equivalência operacional.
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="conclusao">
+      <div class="wide conclusion-card">
+        <span class="section-number">07</span>
+        <h2 id="conclusionTitle"></h2>
+        <p id="conclusionText"></p>
+        <div class="method-card" id="conclusionObservation"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Storytelling estruturado para receber novos insumos pela pasta <code>Data</code>.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

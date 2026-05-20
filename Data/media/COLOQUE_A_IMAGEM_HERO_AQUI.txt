@@ -1,0 +1,2 @@
+Coloque aqui a imagem do cabeçalho, por exemplo: hero.jpg
+Depois atualize Data/config/storytelling.js.
